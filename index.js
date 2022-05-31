@@ -2,12 +2,14 @@
 for (var i = 0; i < document.querySelectorAll(".drum").length; ++i) {
     document.querySelectorAll(".drum")[i].addEventListener("click", function(){
         play_sound(this.innerHTML);
+        btn_Ani(this.innerHTML);
     });
 }
 
 //for keyboard
 document.addEventListener("keydown", function(event){
     play_sound(event.key);
+    btn_Ani(event.key);
 });
 
 //function to check
@@ -52,4 +54,13 @@ function play_sound(key) {
             break;
     }    
 
+}
+
+function btn_Ani(active_key) {
+    var logged = document.querySelector("." + active_key);
+    logged.classList.add("pressed");
+    
+    setTimeout(function() {
+        logged.classList.remove("pressed");
+    }, 1000);
 }
